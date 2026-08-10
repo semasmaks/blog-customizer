@@ -28,6 +28,7 @@ export const ArticleParamsForm = (
 	function toggleForm() {
 		setIsOpen(!isOpen);
 	}
+
 	const [formState, setFormState] = useState<ArticleStateType>(props);
 	function selectOption(fieldName: keyof ArticleStateType, value: OptionType) {
 		setFormState((prevData) => ({
