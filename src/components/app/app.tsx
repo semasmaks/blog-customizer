@@ -19,7 +19,6 @@ export const App = () => {
 		'--bg-color': defaultArticleState.backgroundColor.value,
 	} as CSSProperties);
 
-	const [formState, setFormState] = useState(defaultArticleState);
 	function changeStyles(newStyles: ArticleStateType) {
 		setStyles((prevState) => ({
 			...prevState,
@@ -30,30 +29,18 @@ export const App = () => {
 			'--bg-color': newStyles.backgroundColor.value,
 		}));
 	}
-	function changeForm(newFormState: ArticleStateType) {
-		setFormState((prevState) => ({
-			...prevState,
-			...newFormState,
-		}));
-	}
 
-	function applyChanges(newState: ArticleStateType) {
-		changeForm(newState);
+	function applyStyles(newState: ArticleStateType) {
 		changeStyles(newState);
 	}
 
-	function resetForm() {
-		changeForm(defaultArticleState);
+	function resetStyles() {
 		changeStyles(defaultArticleState);
 	}
 
 	return (
 		<main className={clsx(styles.main)} style={stylesState}>
-			<ArticleParamsForm
-				{...formState}
-				handleSubmit={applyChanges}
-				handleReset={resetForm}
-			/>
+			<ArticleParamsForm handleSubmit={applyStyles} handleReset={resetStyles} />
 			<Article />
 		</main>
 	);
