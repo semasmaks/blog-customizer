@@ -1,5 +1,5 @@
-import { useRef } from 'react';
 import type { MouseEventHandler } from 'react';
+import { useRef } from 'react';
 import clsx from 'clsx';
 import { OptionType } from 'src/constants/articleProps';
 import { Text } from 'src/ui/text';
@@ -34,7 +34,10 @@ export const Option = (props: OptionProps) => {
 
 	return (
 		<li
-			className={clsx(styles.option, styles[optionClassName || ''])}
+			className={clsx(
+				styles.option,
+				optionClassName && styles[optionClassName as keyof typeof styles]
+			)}
 			value={value}
 			onClick={handleClick(value)}
 			tabIndex={0}
