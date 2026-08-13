@@ -31,11 +31,13 @@ export const ArticleParamsForm = (props: {
 
 	const [formState, setFormState] =
 		useState<ArticleStateType>(defaultArticleState);
-	function selectOption(fieldName: keyof ArticleStateType, value: OptionType) {
-		setFormState((prevData) => ({
-			...prevData,
-			[fieldName]: value,
-		}));
+	function selectOption(fieldName: keyof ArticleStateType) {
+		return (value: OptionType) => {
+			setFormState((prevData) => ({
+				...prevData,
+				[fieldName]: value,
+			}));
+		};
 	}
 
 	useOutsideClickClose({
@@ -67,33 +69,33 @@ export const ArticleParamsForm = (props: {
 						title={'шрифт'}
 						selected={formState.fontFamilyOption}
 						options={fontFamilyOptions}
-						onChange={(value) => selectOption('fontFamilyOption', value)}
+						onChange={selectOption('fontFamilyOption')}
 					/>
 					<RadioGroup
 						name={'fontSize'}
 						options={fontSizeOptions}
 						selected={formState.fontSizeOption}
 						title={'размер шрифта'}
-						onChange={(value) => selectOption('fontSizeOption', value)}
+						onChange={selectOption('fontSizeOption')}
 					/>
 					<Select
 						title={'цвет шрифта'}
 						selected={formState.fontColor}
 						options={fontColors}
-						onChange={(value) => selectOption('fontColor', value)}
+						onChange={selectOption('fontColor')}
 					/>
 					<Separator />
 					<Select
 						title={'цвет фона'}
 						selected={formState.backgroundColor}
 						options={backgroundColors}
-						onChange={(value) => selectOption('backgroundColor', value)}
+						onChange={selectOption('backgroundColor')}
 					/>
 					<Select
 						title={'ширина контента'}
 						selected={formState.contentWidth}
 						options={contentWidthArr}
-						onChange={(value) => selectOption('contentWidth', value)}
+						onChange={selectOption('contentWidth')}
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' />

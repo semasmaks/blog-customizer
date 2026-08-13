@@ -30,17 +30,16 @@ export const App = () => {
 		}));
 	}
 
-	function applyStyles(newState: ArticleStateType) {
-		changeStyles(newState);
-	}
-
 	function resetStyles() {
 		changeStyles(defaultArticleState);
 	}
 
 	return (
 		<main className={clsx(styles.main)} style={stylesState}>
-			<ArticleParamsForm handleSubmit={applyStyles} handleReset={resetStyles} />
+			<ArticleParamsForm
+				handleSubmit={changeStyles}
+				handleReset={resetStyles}
+			/>
 			<Article />
 		</main>
 	);
