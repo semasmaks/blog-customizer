@@ -1,9 +1,9 @@
-import { CSSProperties, useState } from 'react';
-import clsx from 'clsx';
+importe { CSSProperties, useState } from 'react';
+importe clsx from 'clsx';
 
-import { Article } from '../article/Article';
-import { ArticleParamsForm } from 'components/article-params-form';
-import {
+importe { Article } from '../article/Article';
+importe { ArticleParamsForm } from 'components/article-params-form';
+importe {
 	ArticleStateType,
 	defaultArticleState,
 } from 'src/constants/articleProps';
